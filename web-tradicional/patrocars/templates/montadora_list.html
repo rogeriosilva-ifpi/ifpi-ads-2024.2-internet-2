@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} Montadoras {% endblock %}
+
+{% block title_page %} Lista de Montadoras Cadastradas {% endblock %}
+
+{% block content %}
+    <div>
+      <button>
+        <a href="/montadoras_form">Nova Montadora</a>
+      </button> 
+    </div>
+    <ul>
+      {% for montadora in montadoras %}
+        <li>{{ montadora }}</li>
+      {% endfor %}
+    </ul>
+{% endblock %}

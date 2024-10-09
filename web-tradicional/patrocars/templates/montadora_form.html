@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %} Nova Montadora {% endblock %}
+
+{% block title_page %} Nova Montadora {% endblock %}
+
+{% block content %}
+  <form action="/montadora_save" method="post">
+    <input type="text" name="nome" placeholder="Nome da Montadora..">
+    <input type="submit" value="Salvar Montadora" />
+  </form>
+{% endblock %}
