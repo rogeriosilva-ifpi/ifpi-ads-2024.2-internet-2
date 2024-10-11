@@ -12,7 +12,7 @@
     </div>
     <ul>
       {% for montadora in montadoras %}
-        <li>{{ montadora }}</li>
+        <li>{{ montadora.nome }} - {{ montadora.pais}}</li>
       {% endfor %}
     </ul>
 {% endblock %}
