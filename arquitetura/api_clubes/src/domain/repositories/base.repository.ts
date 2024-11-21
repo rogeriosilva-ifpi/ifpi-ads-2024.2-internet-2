@@ -1,4 +1,4 @@
 export interface BaseRepository<T> {
-  create(nome: string): T;
+  create(name: string): T;
   list(): T[];
 }

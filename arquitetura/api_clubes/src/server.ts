@@ -1,7 +1,10 @@
 import express, { Request, Response } from "express";
-import { ClubesRoute } from "./clubes.route";
-import { CommonRoute } from "./common.route";
-import { JogadoresRoutes } from "./jogadores.routes";
+import "reflect-metadata";
+import "../src/common/ioc";
+import { ClubesRoute } from "./presentation/routes/clubes.route";
+import { CommonRoute } from "./presentation/routes/common.route";
+import { JogadoresRoutes } from "./presentation/routes/jogadores.routes";
+import { MatchRoutes } from "./presentation/routes/match.route";
 
 const app = express();
 
@@ -14,7 +17,8 @@ app.get("/hello", (req: Request, res: Response) => {
 const routes: Array<CommonRoute> = [];
 routes.push(
   new ClubesRoute(app, "/clubes"),
-  new JogadoresRoutes(app, "/jogadores")
+  new JogadoresRoutes(app, "/jogadores"),
+  new MatchRoutes(app, "/matches")
 );
 
 app.listen(3000, () => {

@@ -1,5 +1,5 @@
 import { Application } from "express";
-import clubesController from "./clubes.controller";
+import clubesController from "../controllers/clubes.controller";
 import { CommonRoute } from "./common.route";
 
 export class ClubesRoute extends CommonRoute {

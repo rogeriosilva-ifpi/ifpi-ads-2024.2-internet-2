@@ -1,12 +1,12 @@
-import { Clube } from "../../domain/entities/clube.entity";
-import { ClubeRepository } from "../../domain/repositories/clube.repository";
+import { Club } from "../../domain/entities/club.entity";
+import { ClubRepository } from "../../domain/repositories/club.repository";
 
-export class TypeORMClubeRepository implements ClubeRepository {
-  create(nome: string): Clube {
+export class TypeORMClubeRepository implements ClubRepository {
+  create(name: string): Club {
     throw new Error("Method not implemented by Hermínio.");
   }
 
-  list(): Clube[] {
+  list(): Club[] {
     throw new Error("Method not implemented by Hermínio.");
   }
 }
