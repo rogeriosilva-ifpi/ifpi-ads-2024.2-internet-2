@@ -14,7 +14,7 @@ import { TypeORMMatchRepository } from "../../persistence/typeorm/typeorm.match.
 const matchRepositoryFactory = (): MatchRepository => {
   const currentHour = new Date().getHours();
 
-  // Experimento trocar
+  // Experimente trocar < por >
   if (currentHour < 12) {
     return new TypeORMMatchRepository();
   } else {
