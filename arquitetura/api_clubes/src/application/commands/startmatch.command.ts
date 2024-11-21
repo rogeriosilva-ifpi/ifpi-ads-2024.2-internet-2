@@ -1,3 +1,6 @@
+import { inject, injectable } from "tsyringe";
+import { SMSProvider } from "../providers/SMSProvider";
+
 interface StartMatchRequest {
   // DTO (InputPort)
   user: string;
@@ -5,6 +8,15 @@ interface StartMatchRequest {
   visitante_id: number;
 }
 
+@injectable()
 export class StartMatchCommand {
-  public execute(request: StartMatchRequest) {}
+  constructor(
+    @inject("SMSProvider")
+    private smsProvider: SMSProvider
+  ) {}
+
+  public execute(request: StartMatchRequest) {
+    console.log("Match Started!!!");
+    this.smsProvider.send("Match Started!!!");
+  }
 }

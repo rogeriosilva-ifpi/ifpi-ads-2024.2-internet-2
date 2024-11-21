@@ -1,7 +1,9 @@
 import express, { Request, Response } from "express";
-import { ClubesRoute } from "./clubes.route";
-import { CommonRoute } from "./common.route";
-import { JogadoresRoutes } from "./jogadores.routes";
+import "reflect-metadata";
+import "../src/shared/ioc";
+import { ClubesRoute } from "./presentation/routes/clubes.route";
+import { CommonRoute } from "./presentation/routes/common.route";
+import { JogadoresRoutes } from "./presentation/routes/jogadores.routes";
 
 const app = express();
 

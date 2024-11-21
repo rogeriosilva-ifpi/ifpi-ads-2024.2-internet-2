@@ -1,5 +1,6 @@
 import { Application } from "express";
-import clubesController from "./clubes.controller";
+
+import clubesController from "../controllers/clubes.controller";
 import { CommonRoute } from "./common.route";
 
 export class ClubesRoute extends CommonRoute {
@@ -7,7 +8,7 @@ export class ClubesRoute extends CommonRoute {
     super(app, "Clubes Routes", suffix);
   }
 
-  configureRoutes(): Application {
+  public configureRoutes(): Application {
     this.app
       .route(this.suffix)
       .get(clubesController.list)
