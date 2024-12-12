@@ -1,7 +1,11 @@
 import { container } from "tsyringe";
+import { HashProvider } from "../../application/providers/hash.provider";
 import { MatchRepository } from "../../domain/repositories/match.repository";
+import { UserRepository } from "../../domain/repositories/user.repository";
+import { RSHashProvider } from "../../infrastructure/rs.hash.provider";
 import { DrizzleMatchRepository } from "../../persistence/drizzle/drizzle.match.repository";
 import { TypeORMMatchRepository } from "../../persistence/typeorm/typeorm.match.repository";
+import { TypeORMUserRepository } from "../../persistence/typeorm/typeorm.user.repository";
 
 // ******* INJEÇÃO DIRETA *******
 
@@ -26,3 +30,7 @@ const matchRepositoryFactory = (): MatchRepository => {
 container.register<MatchRepository>("MatchRepository", {
   useFactory: matchRepositoryFactory,
 });
+
+container.register<UserRepository>("UserRepository", TypeORMUserRepository);
+// container.register<HashProvider>("HashProvider", RSHashProvider);
+container.register<HashProvider>("HashProvider", RSHashProvider);

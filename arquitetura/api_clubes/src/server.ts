@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import "reflect-metadata";
 import "../src/common/ioc";
+import { AuthRoutes } from "./presentation/routes/auth.routes";
 import { ClubesRoute } from "./presentation/routes/clubes.route";
 import { CommonRoute } from "./presentation/routes/common.route";
 import { JogadoresRoutes } from "./presentation/routes/jogadores.routes";
@@ -18,7 +19,8 @@ const routes: Array<CommonRoute> = [];
 routes.push(
   new ClubesRoute(app, "/clubes"),
   new JogadoresRoutes(app, "/jogadores"),
-  new MatchRoutes(app, "/matches")
+  new MatchRoutes(app, "/matches"),
+  new AuthRoutes(app, "")
 );
 
 app.listen(3000, () => {

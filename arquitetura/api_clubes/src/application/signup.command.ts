@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import { User } from "../domain/entities/user.entity";
 import { UserRepository } from "../domain/repositories/user.repository";
 import { HashProvider } from "./providers/hash.provider";
@@ -8,12 +9,14 @@ interface SignUpCommandRequest {
   email: string;
   password: string;
   confirmPassword: string;
+  phone: string;
 }
 
+@injectable()
 export class SignUpCommand {
   constructor(
-    private userRepo: UserRepository,
-    private hashProvider: HashProvider
+    @inject("UserRepository") private userRepo: UserRepository,
+    @inject("HashProvider") private hashProvider: HashProvider
   ) {}
 
   async execute({
@@ -21,6 +24,7 @@ export class SignUpCommand {
     email,
     password,
     confirmPassword,
+    phone,
   }: SignUpCommandRequest): Promise<User> {
     const findUser = await this.userRepo.findByEmail(email);
 
@@ -34,7 +38,9 @@ export class SignUpCommand {
 
     const hashedPass = this.hashProvider.hash(password);
 
-    const userCreated = this.userRepo.create(new User(name, email, hashedPass));
+    const userCreated = await this.userRepo.create(
+      new User(name, email, hashedPass, phone)
+    );
 
     return userCreated;
   }
