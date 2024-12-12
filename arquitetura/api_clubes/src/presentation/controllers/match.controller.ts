@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container, injectable } from "tsyringe";
-import { OnGoingMatchesQuery } from "../../application/queries/ongoing-matches.query";
+import { OnGoingMatchesQuery } from "../../application/ongoing-matches.query";
 
 @injectable()
 export class MatchController {
