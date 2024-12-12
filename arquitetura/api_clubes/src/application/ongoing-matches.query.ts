@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { MatchRepository } from "../../domain/repositories/match.repository";
+import { MatchRepository } from "../domain/repositories/match.repository";
 
 @injectable()
 export class OnGoingMatchesQuery {
