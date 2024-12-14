@@ -1,19 +1,18 @@
 import { Application } from "express";
-import clubesController from "../controllers/clubes.controller";
+import { container } from "tsyringe";
+import { ClubesController } from "../controllers/clubes.controller";
 import { CommonRoute } from "./common.route";
 
 export class ClubesRoute extends CommonRoute {
-  constructor(app: Application, suffix: string) {
-    super(app, "Clubes Routes", suffix);
+  constructor(app: Application) {
+    super(app, "Clubes Routes", "/clubes");
   }
 
   configureRoutes(): Application {
-    this.app
-      .route(this.suffix)
-      .get(clubesController.list)
-      .post(clubesController.create);
+    const controler = container.resolve(ClubesController);
 
-    this.app.route(`${this.suffix}/:id`).get().put().delete().patch();
+    this.app.route(this.suffix).get(controler.list).post(controler.create);
+    this.app.route(`${this.suffix}/:id`).get().put().delete();
 
     return this.app;
   }

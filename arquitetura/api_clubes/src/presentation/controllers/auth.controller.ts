@@ -17,7 +17,7 @@ export class AuthController {
       phone,
     });
 
-    return res.status(201).json(user);
+    res.status(201).json(user);
   };
 }
 

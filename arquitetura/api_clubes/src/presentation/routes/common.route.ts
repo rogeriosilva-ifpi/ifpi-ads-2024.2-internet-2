@@ -5,7 +5,7 @@ export abstract class CommonRoute {
   private name: string;
   protected suffix: string;
 
-  constructor(app: Application, name: string, suffix: string) {
+  constructor(app: Application, name: string, suffix: string = "") {
     this.app = app;
     this.name = name;
     this.suffix = suffix;

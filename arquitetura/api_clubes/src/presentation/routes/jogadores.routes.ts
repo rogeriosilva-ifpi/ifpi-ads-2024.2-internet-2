@@ -2,8 +2,8 @@ import { Application } from "express";
 import { CommonRoute } from "./common.route";
 
 export class JogadoresRoutes extends CommonRoute {
-  constructor(app: Application, suffix: string) {
-    super(app, "Jogadores Routes", suffix);
+  constructor(app: Application) {
+    super(app, "Jogadores Routes", "/jogadores");
   }
 
   configureRoutes(): Application {

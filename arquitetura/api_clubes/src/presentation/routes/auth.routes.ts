@@ -1,14 +1,17 @@
 import { Application } from "express";
-import authController from "../controllers/auth.controller";
+import { container } from "tsyringe";
+import { AuthController } from "../controllers/auth.controller";
 import { CommonRoute } from "./common.route";
 
 export class AuthRoutes extends CommonRoute {
-  constructor(app: Application, suffix: string) {
-    super(app, "Auth Routes", suffix);
+  constructor(app: Application) {
+    super(app, "Auth Routes");
   }
 
   configureRoutes(): Application {
-    this.app.post("/signup", authController.signup);
+    const controller = container.resolve(AuthController);
+
+    this.app.post("/signup", controller.signup);
 
     return this.app;
   }

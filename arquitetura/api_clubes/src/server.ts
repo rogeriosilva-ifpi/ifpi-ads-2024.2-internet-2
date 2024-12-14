@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import "express-async-errors";
 import "reflect-metadata";
 import "../src/common/ioc";
 import { AuthRoutes } from "./presentation/routes/auth.routes";
@@ -16,12 +17,18 @@ app.get("/hello", (req: Request, res: Response) => {
 });
 
 const routes: Array<CommonRoute> = [];
+
 routes.push(
-  new ClubesRoute(app, "/clubes"),
-  new JogadoresRoutes(app, "/jogadores"),
-  new MatchRoutes(app, "/matches"),
-  new AuthRoutes(app, "")
+  new ClubesRoute(app),
+  new JogadoresRoutes(app),
+  new MatchRoutes(app),
+  new AuthRoutes(app)
 );
+
+// Global Error Handler (a melhorar com custom HTTPException)
+app.use((err, req, res, next) => {
+  res.status(400).json({ message: err.message });
+});
 
 app.listen(3000, () => {
   for (let route of routes) {

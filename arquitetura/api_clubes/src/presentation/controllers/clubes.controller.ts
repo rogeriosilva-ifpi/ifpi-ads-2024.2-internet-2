@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
+import { injectable } from "tsyringe";
 import { AppDataSource } from "../../../data-source";
 import { Club } from "../../domain/entities/club.entity";
 
-class ClubesController {
+@injectable()
+export class ClubesController {
   public create(req: Request, res: Response) {
     res.status(201).json({ ...req.body });
   }
@@ -14,5 +16,3 @@ class ClubesController {
     res.status(200).json(clubes);
   }
 }
-
-export default new ClubesController();
