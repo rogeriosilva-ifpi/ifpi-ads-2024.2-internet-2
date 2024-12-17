@@ -1,7 +1,9 @@
 import { container } from "tsyringe";
 import { HashProvider } from "../../application/providers/hash.provider";
+import { TokenProvider } from "../../application/providers/token.provider";
 import { MatchRepository } from "../../domain/repositories/match.repository";
 import { UserRepository } from "../../domain/repositories/user.repository";
+import { JWTTokenProvider } from "../../infrastructure/jwt.token.provider";
 import { RSHashProvider } from "../../infrastructure/rs.hash.provider";
 import { DrizzleMatchRepository } from "../../persistence/drizzle/drizzle.match.repository";
 import { TypeORMMatchRepository } from "../../persistence/typeorm/typeorm.match.repository";
@@ -34,3 +36,4 @@ container.register<MatchRepository>("MatchRepository", {
 container.register<UserRepository>("UserRepository", TypeORMUserRepository);
 // container.register<HashProvider>("HashProvider", RSHashProvider);
 container.register<HashProvider>("HashProvider", RSHashProvider);
+container.register<TokenProvider>("TokenProvider", JWTTokenProvider);

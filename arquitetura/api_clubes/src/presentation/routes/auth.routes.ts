@@ -12,6 +12,7 @@ export class AuthRoutes extends CommonRoute {
     const controller = container.resolve(AuthController);
 
     this.app.post("/signup", controller.signup);
+    this.app.post("/signin", controller.signin);
 
     return this.app;
   }
