@@ -12,8 +12,6 @@ export class MatchRoutes extends CommonRoute {
   configureRoutes(): Application {
     const matchController = container.resolve(MatchController);
 
-    // this.app.get('/dasd', dasdas,() => {})
-
     this.app.route(this.suffix).get(tokenMiddleware, matchController.list); //Controller Matches
     return this.app;
   }
