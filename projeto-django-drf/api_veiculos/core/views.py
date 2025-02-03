@@ -14,10 +14,11 @@ class MontadoraModeloViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset.filter(montadora=self.kwargs.get('montadora_pk'))
+    
+    def perform_create(self, serializer):
+        montadora_pk = self.kwargs.get('montadora_pk')
+        montadora = Montadora.objects.get(pk=montadora_pk)
+        serializer.save(montadora=montadora)
 
-
-class ModeloViewSet(viewsets.ModelViewSet):
-    queryset = Modelo.objects.all()
-    serializer_class = ModeloSerializer
-
+    
 

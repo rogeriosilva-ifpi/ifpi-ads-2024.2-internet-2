@@ -18,7 +18,7 @@ class MontadoraSimpleSerializer(serializers.ModelSerializer):
 
 class ModeloSerializer(serializers.ModelSerializer):
     montadora = MontadoraSimpleSerializer(read_only=True)
-    montadora_id = serializers.IntegerField(write_only=True)
+    # montadora_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Modelo

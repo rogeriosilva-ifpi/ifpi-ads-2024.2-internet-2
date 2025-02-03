@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface Montadora {
+export interface Montadora {
     id: number;
     modelos: string[];
     nome: string;
@@ -54,9 +54,9 @@ export default async function Montadora() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {montadoras.map(montadora => (
                             <li key={montadora.id} className="border rounded-lg p-4 shadow-md">
-                                <h2 className="text-xl font-bold mb-2">{montadora.nome}</h2>
-                                <p className="text-gray-600">País: {montadora.pais}</p>
-                                <p className="text-gray-600">Ano de Fundação: {montadora.ano_fundacao}</p>
+                                <h2 className="text-xl font-bold mb-2">{montadora.nome} <span className="text-gray-300">#{montadora.id}</span></h2>
+                                <p className="text-gray-200">País: {montadora.pais}</p>
+                                <p className="text-gray-200">Ano de Fundação: {montadora.ano_fundacao}</p>
                                 {(montadora.modelos.length > 0 
                                     && (
                                         <Link href={`/montadoras/${montadora.id}/modelos`} className="text-blue-500 hover:text-blue-700 mt-4 inline-block">
