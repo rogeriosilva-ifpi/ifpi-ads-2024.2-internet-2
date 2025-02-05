@@ -5,17 +5,22 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "dev-gql": "ts-node-dev --transpile-only --ignore-watch node_modules src/presentation/graphql/hello.ts",
     "typeorm": "node -r ts-node/register ./node_modules/.bin/typeorm -d ./data-source.ts"
   },
   "dependencies": {
+    "@apollo/server": "^4.11.3",
     "@types/jsonwebtoken": "^9.0.7",
     "express": "^4.21.1",
     "express-async-errors": "^3.1.1",
+    "graphql": "^16.10.0",
+    "graphql-tools": "^9.0.11",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.2",
     "tsyringe": "^4.8.0",
-    "typeorm": "^0.3.20"
+    "typeorm": "^0.3.20",
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
