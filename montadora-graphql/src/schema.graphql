@@ -1,0 +1,8 @@
+type Montadora {
+  id: ID!
+  nome: String
+}
+
+type Query {
+    montadoras: [Montadora]
+}

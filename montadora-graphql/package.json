@@ -1,0 +1,27 @@
+{
+  "name": "montadora-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "typeorm": "node -r ts-node/register ./node_modules/.bin/typeorm -d ./data-source.ts"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.3",
+    "@graphql-tools/graphql-file-loader": "^8.0.12",
+    "@graphql-tools/load": "^8.0.12",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "graphql": "^16.10.0",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}
